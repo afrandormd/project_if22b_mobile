@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:project_if22b/config/assets.dart';
+import 'package:project_if22b/screen/admin/list_mahasiswa.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -110,7 +111,12 @@ class IconButton extends StatelessWidget {
 
   IconButton(this.nameLabel, this.iconLabel, this.index);
 
-  List<Map> _fragment = [];
+  List<Map> _fragment = [
+    {
+      'title': 'Data Mahasiswa',
+      'view': ListMahasiswa()
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +136,14 @@ class IconButton extends StatelessWidget {
                 borderRadius: BorderRadius.all(
                   Radius.circular(40),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => _fragment[index]['view'],
+                    ),
+                  );
+                },
                 child: Container(
                   // margin: EdgeInsets.all(5),
                   height: 60,
