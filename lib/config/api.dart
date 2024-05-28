@@ -1,6 +1,6 @@
 class Api {
   // route (root)
-  static const _host = "http://192.168.137.201t /api_if22b";
+  static const _host = "http://192.168.160.144/api_if22b";
 
   // folder mahasiswa
   static String _mahasiswa = "$_host/mahasiswa";
