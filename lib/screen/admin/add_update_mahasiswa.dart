@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:project_if22b/config/assets.dart';
+import 'package:project_if22b/event/event_db.dart';
 import 'package:project_if22b/model/mahasiswa.dart';
+import 'package:project_if22b/screen/admin/list_mahasiswa.dart';
+import 'package:project_if22b/widget/info.dart';
 
 class AddUpdateMahasiswa extends StatefulWidget {
   Mahasiswa? mahasiswa;
@@ -72,29 +77,29 @@ class _AddUpdateMahasiswaState extends State<AddUpdateMahasiswa> {
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       if (widget.mahasiswa == null) {
-                        // String message = await EventDb.AddMahasiswa(
-                        //   _controllerNpm.text,
-                        //   _controllerNama.text,
-                        //   _controllerAlamat.text,
-                        // );
-                        // Info.snackbar(message);
-                        // if (message.contains('Berhasil')) {
-                        //   _controllerNpm.clear();
-                        //   _controllerNama.clear();
-                        //   _controllerAlamat.clear();
-                        //   Get.off(
-                        //     ListMahasiswa(),
-                        //   );
-                        // }
+                        String message = await EventDb.AddMahasiswa(
+                          _controllerNpm.text,
+                          _controllerNama.text,
+                          _controllerAlamat.text,
+                        );
+                        Info.snackbar(message);
+                        if (message.contains('Berhasil')) {
+                          _controllerNpm.clear();
+                          _controllerNama.clear();
+                          _controllerAlamat.clear();
+                          Get.off(
+                            ListMahasiswa(),
+                          );
+                        }
                       } else {
                         // EventDb.UpdateMahasiswa(
                         //   _controllerNpm.text,
                         //   _controllerNama.text,
                         //   _controllerAlamat.text,
                         // );
-                        // Get.off(
-                        //   ListMahasiswa(),
-                        // );
+                        Get.off(
+                          ListMahasiswa(),
+                        );
                       }
                     }
                   },
